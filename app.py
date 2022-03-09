@@ -59,51 +59,7 @@ def predict():
         return render_template("prediction.html")
 
 
-@app.route('/forecast',methods=['GET', 'POST'])
-def forecast():
-    if request.method == 'POST':
-        city=request.form["city"]
-        import pandas as pd
-        df=pd.read_csv('./data/city_day.csv')
-        
-        df['Date']=pd.to_datetime(df['Date'])
-        Mumbai = df[df['City'] == city]
-        from fbprophet import Prophet 
 
-        Mumbai_data = Mumbai[['Date','AQI']]
-        Mumbai_data.reset_index(inplace = True,drop = True)
-
-        #Defining our training dataset
-        train_df = Mumbai_data
-        train_df.rename(mapper = {'Date':'ds','AQI':'y'},axis =1,inplace = True)
-        model = Prophet(holidays_prior_scale=0,seasonality_prior_scale=365,n_changepoints= 50,)
-        model.fit(train_df)
-        future = model.make_future_dataframe(periods=365)
-        future.tail()
-        #Forecasting the AQI values
-        forecast = model.predict(future)
-        forecast.tail()
-        predected=forecast.iloc[2000:,:]
-        newDate=predected['ds'].to_numpy()
-        newData=predected['yhat'].to_numpy()
-        davg=(np.average(newData))
-        # newData.plot(x='ds',y='yhat')
-        df2 = pd.DataFrame({
-                "Years(2020-2021)": newDate,
-                "Predicted AQI(Air Quality Index)": newData
-                
-
-            }) 
-
-        fig = px.line(df2, x="Years(2020-2021)",
-                        y="Predicted AQI(Air Quality Index)",title=f'Predicted AQI of  in 2020-2021')
-        fig.update_traces(line_color='green')    
-        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-
-        return render_template('forecast.html', graphJSON=graphJSON,paqi=round(davg,4),city=city )
-
-    else:
-        return render_template('forecast.html')    
 
 
 
