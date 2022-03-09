@@ -59,3 +59,5 @@ Now our application on cloud is ready for doing prediction. The prediction data 
 
 Finally, After the model has successfully forecasted the AQI then our webpage will plot the graph of forecasted value for user interaction
 
+# Deployed at:https://aqiprediction03.herokuapp.com/
+# Linkedin :https://www.linkedin.com/posts/deepak-prasad-33b35b22b_ai-ineuron-deeplearning-activity-6906886614849830912-kwGL
