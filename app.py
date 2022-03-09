@@ -1,8 +1,5 @@
 from flask import Flask ,escape,request,render_template
 import pickle
-import plotly.express as px
-import plotly
-import json
 import numpy as np
 app=Flask(__name__)
 reg=pickle.load(open('xgboost_regressor.pkl','rb'))
