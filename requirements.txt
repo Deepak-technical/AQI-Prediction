@@ -8,5 +8,6 @@ scikit-learn==0.24.1
 matplotlib==3.3.4
 pandas==1.2.4
 MarkupSafe==1.1.1
+itsdangerous==1.1.0
 
 
