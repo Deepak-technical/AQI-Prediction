@@ -61,3 +61,5 @@ Finally, After the model has successfully forecasted the AQI then our webpage wi
 
 # Deployed at:https://aqiprediction03.herokuapp.com/
 # Linkedin :https://www.linkedin.com/posts/deepak-prasad-33b35b22b_ai-ineuron-deeplearning-activity-6906886614849830912-kwGL
+
+# Video Demo: https://drive.google.com/file/d/1EjpZZQtiD1AvQmVhkIddZ3ZBqfwBljg0/view?usp=sharing
